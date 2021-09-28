@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 71b591588926a6649bb2306c893805f1
+  m_SerializeEntries:
+  - m_GUID: 8393f5b627143ef41812df47ce73d464
+    m_Address: Game/Card.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 745ff411a2164834caa8838ddead8f1f
+    m_Address: Eatable/Apricot.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 51a7aa0ba42394248b0c7afc25e97042
+    m_Address: Eatable/Cake.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 37ddbf3dc147889419aba48a8525b0b5
+    m_Address: Eatable/Grape.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9a2114d488132d944aef600ca08a90f4
+    m_Address: Eatable/Melon.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8ea304102c721e64fb41e7735673b07a
+    m_Address: Eatable/Raspberries.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d59788a2aa000ad4cb7e17cbe3b41efd
+    m_Address: Eatable/Tomato.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ba14e9c93a88059418c750a84208aef5
+    m_Address: Uneatable/Backpack.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9104e2203f0bb69459a3f1a06940aa67
+    m_Address: Uneatable/Ball.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 99ac5d40cf99f9141b108241c6be62be
+    m_Address: Uneatable/Flashlight.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2cea4a8683c478c44a11737d41cacb3d
+    m_Address: Uneatable/Lighthouse.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 63640e0d76298f942a3bbea21c243b92
+    m_Address: Uneatable/Rollers.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e97301e12dd28cf449ea3499c17f2cf8
+    m_Address: Uneatable/Telephone.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: efa052e638a25f44b831d36cbb1d185e, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 67fb8f6ce218ef242bd15e91c220ca8a, type: 2}
+    - {fileID: 11400000, guid: 20e6c5bdadd8c9c4fb3512a15d88de28, type: 2}
