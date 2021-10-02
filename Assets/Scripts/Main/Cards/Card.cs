@@ -2,14 +2,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Card : MonoBehaviour
 {
-    private const int yAnchor = -15;
+    [SerializeField] private TextMeshProUGUI cardName;
+    
+    private const int Y_ANCHOR = -15;
     private SpritesManager spritesManager;
     private bool _isEatable;
     private Animator animator;
-    private bool isAnimated;
+
 
     private void Awake()
     {
@@ -20,7 +23,7 @@ public class Card : MonoBehaviour
     public void MoveByMouse(float pointerXPos)
     {
         transform.position = new Vector2(pointerXPos, transform.right.y * pointerXPos);
-        transform.up = (Vector2)transform.position - new Vector2(0, yAnchor);
+        transform.up = (Vector2)transform.position - new Vector2(0, Y_ANCHOR);
     }
 
     public void ReturnCardPosition(Vector3 pos)
@@ -29,10 +32,15 @@ public class Card : MonoBehaviour
         transform.up = Vector2.up;
     }
 
-    public void Destroy()
+    public void DestroyCard()
     {
         transform.SetParent(transform.parent.parent);
         spritesManager.UnloadSprites();
+        animator.SetTrigger("Destroy");
+    }
+
+    public void DestroyAfterEndOfAnimation()
+    {
         Destroy(this.gameObject);
     }
 
@@ -51,18 +59,5 @@ public class Card : MonoBehaviour
         return GetComponentInChildren<CardImage>();
     }
 
-    public void AppearAnimationEnds()
-    {
-        isAnimated = false;
-    }
-
-    public bool IsAnimated()
-    {
-        return isAnimated;
-    }
-
-    public void ChangeAnimatorState(bool state)
-    {
-        animator.enabled = state;
-    }
+    public void SetCardName(string name) => cardName.text = name;
 }

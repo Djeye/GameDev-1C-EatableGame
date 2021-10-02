@@ -1,0 +1,3 @@
+{"_maxLives":1,
+"_timeOutTime":1,
+"_maxComboScore":10}

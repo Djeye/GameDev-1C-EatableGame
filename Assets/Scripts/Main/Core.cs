@@ -6,7 +6,7 @@ using System.IO;
 
 public static class Core
 {
-    private const string FILE_PATH = "config.txt";
+    private const string FILE_PATH = "Assets/config.txt";
     public static int score;
 
     public static int livesCount;
@@ -18,6 +18,11 @@ public static class Core
 
     public delegate void LifeAction();
     public static event LifeAction removeLiveEvent;
+
+    public delegate void EndGameAction();
+    public static event EndGameAction endGameEvent;
+
+    public static bool isGameEnded = false;
 
     public static void AddScore()
     {
@@ -37,7 +42,8 @@ public static class Core
 
     private static void EndGame()
     {
-        Debug.Log("endgame");
+        endGameEvent();
+        isGameEnded = true;
     }
 
     public static void InitializeConfig()
@@ -48,5 +54,9 @@ public static class Core
         maxCombo = data._maxComboScore;
         timeOut = data._timeOutTime;
     }
+
+    public static bool IsCardEatable() { return Random.Range(0, 2).Equals(0); }
+    public static int RandomCard(int count) { return Random.Range(0, count); }
+
 }
 

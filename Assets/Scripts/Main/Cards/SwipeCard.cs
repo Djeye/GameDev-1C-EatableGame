@@ -22,7 +22,6 @@ public class SwipeCard : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDra
     public void OnBeginDrag(PointerEventData eventData)
     {
         card = GetComponentInChildren<Card>();
-        if (!card.IsAnimated()) card.ChangeAnimatorState(false);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -53,7 +52,7 @@ public class SwipeCard : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDra
             Core.AddScore();
         }
 
-        card.Destroy();
+        card.DestroyCard();
         cardManager.SpawnNewCard();
     }
 }

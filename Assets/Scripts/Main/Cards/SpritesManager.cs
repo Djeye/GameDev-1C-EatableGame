@@ -12,14 +12,14 @@ public class SpritesManager : MonoBehaviour
     private SpriteRenderer _cardFaceRenderer;
 
     private AssetReferenceSprite currentCardSprite;
-    public void LoadCard(CardImage cardImage, bool isEatable)
+    public void LoadCard(CardImage cardImage, bool isEatable, int number)
     {
         _cardFaceRenderer = cardImage.GetComponent<SpriteRenderer>();
 
         if (isEatable)
-            currentCardSprite = eatableObjects[Random.Range(0, eatableObjects.Count - 1)];
+            currentCardSprite = eatableObjects[number];
         else
-            currentCardSprite = uneatableObjects[Random.Range(0, uneatableObjects.Count - 1)];
+            currentCardSprite = uneatableObjects[number];
 
         currentCardSprite.LoadAssetAsync().Completed += SpawnCardSpriteFace;
     }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MagicCircle : MonoBehaviour
+public class MagicCircle : Effect
 {
     private Animator animator;
     private SpriteRenderer sr;
@@ -11,16 +11,16 @@ public class MagicCircle : MonoBehaviour
     {
         sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-        sr.enabled = false;
+        EndAnimation();
     }
 
-    public void CreateAnimation()
+    override public void StartAnimation()
     {
         sr.enabled = true;
         animator.SetTrigger("Animate");
     }
 
-    public void EndAnimation()
+    override public void EndAnimation()
     {
         sr.enabled = false;
     }
