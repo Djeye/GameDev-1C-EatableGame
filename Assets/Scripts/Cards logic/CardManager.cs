@@ -13,6 +13,7 @@ public class CardManager : MonoBehaviour
     private void Awake()
     {
         spritesManager = GetComponent<SpritesManager>();
+        Core.InitializeConfig();
     }
 
 

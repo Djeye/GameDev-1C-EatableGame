@@ -6,7 +6,8 @@ public class MagicCircle : MonoBehaviour
 {
     private Animator animator;
     private SpriteRenderer sr;
-    void Start()
+
+    void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
