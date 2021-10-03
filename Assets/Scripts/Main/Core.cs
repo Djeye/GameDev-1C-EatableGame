@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using System.IO;
-
 
 public static class Core
 {
@@ -14,25 +11,26 @@ public static class Core
     public static int maxCombo;
 
     public delegate void ScoreAction();
-    public static event ScoreAction addScoreEvent;
+    public static event ScoreAction AddScoreEvent;
 
     public delegate void LifeAction();
-    public static event LifeAction removeLiveEvent;
+    public static event LifeAction RemoveLiveEvent;
 
     public delegate void EndGameAction();
-    public static event EndGameAction endGameEvent;
+    public static event EndGameAction EndGameEvent;
 
     public static bool isGameEnded = false;
 
     public static void AddScore()
     {
         score++;
-        addScoreEvent();
+        AddScoreEvent();
     }
 
     public static void RemoveLive()
     {
-        removeLiveEvent();
+        RemoveLiveEvent();
+
         livesCount--;
         if (livesCount.Equals(0))
         {
@@ -42,11 +40,11 @@ public static class Core
 
     private static void EndGame()
     {
-        endGameEvent();
+        EndGameEvent();
         isGameEnded = true;
     }
 
-    public static void InitializeConfig()
+    public static void LoadConfigData()
     {
         var data = JsonUtility.FromJson<Config>(new StreamReader(FILE_PATH).ReadToEnd());
 
@@ -54,9 +52,5 @@ public static class Core
         maxCombo = data._maxComboScore;
         timeOut = data._timeOutTime;
     }
-
-    public static bool IsCardEatable() { return Random.Range(0, 2).Equals(0); }
-    public static int RandomCard(int count) { return Random.Range(0, count); }
-
 }
 

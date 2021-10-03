@@ -6,37 +6,57 @@ public class CardManager : MonoBehaviour
 {
     [SerializeField] Card card;
     [SerializeField] VFXManager vfxManager;
-    private SpritesManager spritesManager;
-    private CardNames cardNames;
 
+    private SpritesManager _spritesManager;
+    private CardNames _cardNames;
 
     private void Awake()
     {
-        Core.InitializeConfig();
-        spritesManager = GetComponent<SpritesManager>();
-        cardNames = GetComponent<CardNames>();
+        Core.LoadConfigData();
+        _spritesManager = GetComponent<SpritesManager>();
+        _cardNames = GetComponent<CardNames>();
     }
-
 
     private void Start()
     {
-        SpawnNewCard();
+        AppearNewCard();
     }
 
-    public void SpawnNewCard()
+    public void AppearNewCard()
     {
         if (Core.isGameEnded) return;
 
+        AppearAnimationEffects();
+
+        GenerateNewCard();
+    }
+
+    private void AppearAnimationEffects()
+    {
         vfxManager.ProcessAnimation();
-        var newCard = Instantiate(card,  transform);
+    }
+
+    private void GenerateNewCard()
+    {
+        var newCard = Instantiate(card, transform);
         newCard.name = card.name;
 
-        bool isEatable = Core.IsCardEatable();
-        int number = Random.Range(0, cardNames.GetCardsCount(isEatable));
+        bool isEatable = GetEatableOrUneatable();
+        int cardNumber = GetRandomCardNumber(_cardNames.GetCardsCount(isEatable));
 
         newCard.SetEatable(isEatable);
-        newCard.SetCardName(cardNames.GetCardName(isEatable, number));
-        
-        spritesManager.LoadCard(newCard.ChildSprite(), isEatable, number);
+        newCard.SetCardName(_cardNames.GetCardName(isEatable, cardNumber));
+
+        _spritesManager.LoadCardSprite(newCard.ChildSprite(), isEatable, cardNumber);
+    }
+
+    private bool GetEatableOrUneatable()
+    {
+        return Random.Range(0, 2).Equals(0);
+    }
+
+    private int GetRandomCardNumber(int count)
+    {
+        return Random.Range(0, count);
     }
 }

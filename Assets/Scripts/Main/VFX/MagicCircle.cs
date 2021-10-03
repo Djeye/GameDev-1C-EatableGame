@@ -1,27 +1,25 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MagicCircle : Effect
 {
-    private Animator animator;
-    private SpriteRenderer sr;
+    private Animator _animator;
+    private SpriteRenderer _spriteRenderer;
 
     void Awake()
     {
-        sr = GetComponent<SpriteRenderer>();
-        animator = GetComponent<Animator>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _animator = GetComponent<Animator>();
         EndAnimation();
     }
 
     override public void StartAnimation()
     {
-        sr.enabled = true;
-        animator.SetTrigger("Animate");
+        _spriteRenderer.enabled = true;
+        _animator.SetTrigger("Animate");
     }
 
     override public void EndAnimation()
     {
-        sr.enabled = false;
+        _spriteRenderer.enabled = false;
     }
 }

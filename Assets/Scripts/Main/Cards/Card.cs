@@ -1,23 +1,20 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 
 public class Card : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI cardName;
-    
     private const int Y_ANCHOR = -15;
-    private SpritesManager spritesManager;
-    private bool _isEatable;
-    private Animator animator;
+    [SerializeField] private TextMeshProUGUI cardName;
 
+    private SpritesManager _spritesManager;
+    private Animator _animator;
+
+    private bool _isEatable;
 
     private void Awake()
     {
-        spritesManager = GetComponentInParent<SpritesManager>();
-        animator = GetComponent<Animator>();
+        _spritesManager = GetComponentInParent<SpritesManager>();
+        _animator = GetComponent<Animator>();
     }
 
     public void MoveByMouse(float pointerXPos)
@@ -35,18 +32,8 @@ public class Card : MonoBehaviour
     public void DestroyCard()
     {
         transform.SetParent(transform.parent.parent);
-        spritesManager.UnloadSprites();
-        animator.SetTrigger("Destroy");
-    }
-
-    public void DestroyAfterEndOfAnimation()
-    {
-        Destroy(this.gameObject);
-    }
-
-    public void SetEatable(bool isEatable)
-    {
-        _isEatable = isEatable;
+        _spritesManager.UnloadCardSprites();
+        _animator.SetTrigger("Destroy");
     }
 
     public bool GetEatable()
@@ -60,4 +47,9 @@ public class Card : MonoBehaviour
     }
 
     public void SetCardName(string name) => cardName.text = name;
+
+    public void SetEatable(bool isEatable) => _isEatable = isEatable;
+
+    public void DestroyAfterEndOfAnimation() => Destroy(this.gameObject);
+
 }

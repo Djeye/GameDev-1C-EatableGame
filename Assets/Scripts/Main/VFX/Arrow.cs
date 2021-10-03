@@ -1,33 +1,31 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
 public class Arrow : Effect
 {
-    private Animator animator;
-    private Image image;
-    private TextMeshProUGUI text;
+    private Animator _animator;
+    private Image _image;
+    private TextMeshProUGUI _text;
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
-        image = GetComponent<Image>();
-        text = GetComponentInChildren<TextMeshProUGUI>();
+        _animator = GetComponent<Animator>();
+        _image = GetComponent<Image>();
+        _text = GetComponentInChildren<TextMeshProUGUI>();
         EndAnimation();
     }
 
     override public void EndAnimation()
     {
-        image.enabled = false;
-        text.enabled = false;
+        _image.enabled = false;
+        _text.enabled = false;
     }
 
     override public void StartAnimation()
     {
-        animator.SetTrigger("Animate");
-        image.enabled = true;
-        text.enabled = true;
+        _image.enabled = true;
+        _text.enabled = true;
+        _animator.SetTrigger("Animate");
     }
 }

@@ -1,40 +1,40 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class TimeOutSlider : MonoBehaviour
 {
-    [SerializeField] private Slider slider;
-    private float timeOutSeconds;
+    private Slider _slider;
+    private float _timeOutSeconds;
+    private float _currentTime;
 
-    private float currentTime;
     void Start()
     {
-        timeOutSeconds = Core.timeOut;
+        _slider = GetComponent<Slider>();
+        _timeOutSeconds = Core.timeOut;
         SetupMaxTime();
-        Core.addScoreEvent += SetupMaxTime;
-        Core.removeLiveEvent += SetupMaxTime;
+
+        Core.AddScoreEvent += SetupMaxTime;
+        Core.RemoveLiveEvent += SetupMaxTime;
     }
 
     void FixedUpdate()
     {
         if (Core.isGameEnded) return;
 
-        currentTime -= Time.fixedDeltaTime;
-        slider.value = currentTime / timeOutSeconds;
+        _currentTime -= Time.fixedDeltaTime;
+        _slider.value = _currentTime / _timeOutSeconds;
 
-        if (currentTime < 0) Core.RemoveLive();
+        if (_currentTime < 0) Core.RemoveLive();
     }
 
     private void SetupMaxTime()
     {
-        currentTime = timeOutSeconds;
+        _currentTime = _timeOutSeconds;
     }
 
     private void OnDisable()
     {
-        Core.addScoreEvent -= SetupMaxTime;
-        Core.removeLiveEvent -= SetupMaxTime;
+        Core.AddScoreEvent -= SetupMaxTime;
+        Core.RemoveLiveEvent -= SetupMaxTime;
     }
 }

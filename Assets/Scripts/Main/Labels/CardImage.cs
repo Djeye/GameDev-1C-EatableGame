@@ -1,8 +1,3 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class CardImage : MonoBehaviour
-{
-
-}
+public class CardImage : MonoBehaviour { }

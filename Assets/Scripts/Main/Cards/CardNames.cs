@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class CardNames : MonoBehaviour
@@ -9,18 +8,17 @@ public class CardNames : MonoBehaviour
 
     public string GetCardName(bool isEatable, int i)
     {
-        string name;
         if (isEatable)
-            name = eatableObjects[i];
+            return eatableObjects[i];
         else
-            name = uneatableObjects[i];
-        return name;
+            return uneatableObjects[i];
     }
 
-    public int GetCardsCount(bool isEatable) { 
+    public int GetCardsCount(bool isEatable)
+    {
         if (isEatable)
             return eatableObjects.Count;
         else
             return uneatableObjects.Count;
-    } 
+    }
 }

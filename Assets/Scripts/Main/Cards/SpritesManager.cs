@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -10,21 +9,21 @@ public class SpritesManager : MonoBehaviour
     [SerializeField] private List<AssetReferenceSprite> uneatableObjects;
 
     private SpriteRenderer _cardFaceRenderer;
+    private AssetReferenceSprite _currentCardSprite;
 
-    private AssetReferenceSprite currentCardSprite;
-    public void LoadCard(CardImage cardImage, bool isEatable, int number)
+    public void LoadCardSprite(CardImage cardImage, bool isEatable, int number)
     {
         _cardFaceRenderer = cardImage.GetComponent<SpriteRenderer>();
 
         if (isEatable)
-            currentCardSprite = eatableObjects[number];
+            _currentCardSprite = eatableObjects[number];
         else
-            currentCardSprite = uneatableObjects[number];
+            _currentCardSprite = uneatableObjects[number];
 
-        currentCardSprite.LoadAssetAsync().Completed += SpawnCardSpriteFace;
+        _currentCardSprite.LoadAssetAsync().Completed += ApplyCardFaceSprite;
     }
 
-    private void SpawnCardSpriteFace(AsyncOperationHandle<Sprite> obj)
+    private void ApplyCardFaceSprite(AsyncOperationHandle<Sprite> obj)
     {
         if (obj.Status.Equals(AsyncOperationStatus.Succeeded))
         {
@@ -32,8 +31,8 @@ public class SpritesManager : MonoBehaviour
         }
     }
 
-    public void UnloadSprites()
+    public void UnloadCardSprites()
     {
-        currentCardSprite.ReleaseAsset();
+        _currentCardSprite.ReleaseAsset();
     }
 }

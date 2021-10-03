@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class CanvasVFX : MonoBehaviour
@@ -10,8 +8,8 @@ public class CanvasVFX : MonoBehaviour
 
     private void Start()
     {
-        Core.addScoreEvent += SpawnStar;
-        Core.removeLiveEvent += SpawnHeart;
+        Core.AddScoreEvent += SpawnStar;
+        Core.RemoveLiveEvent += SpawnHeart;
     }
 
     private void SpawnStar()
@@ -26,7 +24,7 @@ public class CanvasVFX : MonoBehaviour
 
     private void OnDisable()
     {
-        Core.addScoreEvent -= SpawnStar;
-        Core.removeLiveEvent -= SpawnHeart;
+        Core.AddScoreEvent -= SpawnStar;
+        Core.RemoveLiveEvent -= SpawnHeart;
     }
 }
